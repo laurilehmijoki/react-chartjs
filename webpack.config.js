@@ -36,7 +36,7 @@ module.exports = {
                 root: "Chart",
                 commonjs2: "Chartjs",
                 commonjs: "Chartjs",
-                amd: "Chartjs"
+                amd: "Chart"
             }
         }
     ],
