@@ -127,7 +127,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        updatePoints(nextProps, chart, dataKey);
 	        if (chart.scale) {
 	          chart.scale.xLabels = nextProps.data.labels;
+	           
+	            if (chart.scale.calculateXLabelRotation){
 	          chart.scale.calculateXLabelRotation();
+	            }
 	        }
 	        chart.update();
 	      }
@@ -188,6 +191,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    while(nextProps.data.length < chart.segments.length) {
 	      chart.removeData();
 	    }
+	  } else if (name === "Radar") {
+	      chart.removeData();
+	      nextProps.data.datasets.forEach(function(set, setIndex) {
+	      set.data.forEach(function(val, pointIndex) {
+	        if (typeof(chart.datasets[setIndex][dataKey][pointIndex]) == "undefined") {
+	          addData(nextProps, chart, setIndex, pointIndex);
+	        } else {
+	          chart.datasets[setIndex][dataKey][pointIndex].value = val;
+	        }
+	      });
+	    });
 	  } else {
 	    while (chart.scale.xLabels.length > nextProps.data.labels.length) {
 	      chart.removeData();
