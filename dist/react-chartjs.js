@@ -2,7 +2,7 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("react"), require("react-dom"), require("Chartjs"));
 	else if(typeof define === 'function' && define.amd)
-		define(["react", "react-dom", "Chartjs"], factory);
+		define(["react", "react-dom", "Chart"], factory);
 	else if(typeof exports === 'object')
 		exports["react-chartjs"] = factory(require("react"), require("react-dom"), require("Chartjs"));
 	else
